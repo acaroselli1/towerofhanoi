@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Towers of Hanoi</title>
+    <style>
+        @font-face {
+
+            font-family: "Cartwheel";
+            src: "Cartwheel.otf";
+        }
+
+        * {
+            outline: 1px solid red;
+        }
+
+        table {}
+
+        td {
+            width: 40vw;
+            height: 5vw;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        .test {
+            text-align: center;
+        }
+
+        body {
+
+            font-family: "Cartwheel";
+        }
+
+
+
+        p {
+            font-weight: bold;
+        }
+
+        .ring5 {
+
+            background-color: green;
+            height: 50px;
+            width: 300px;
+            border-radius: 30px;
+        }
+
+
+        .ring4 {
+            background-color: lightblue;
+            height: 50px;
+            width: 250px;
+            border-radius: 30px;
+            top: 28.5vh;
+            margin-left: 50px;
+        }
+
+        .ring3 {
+            position: absolute;
+            background-color: navy;
+            height: 50px;
+            width: 200px;
+            border-radius: 30px;
+            top: 22vh;
+            margin-left: 75px;
+        }
+
+        .A {
+            background: url("disk.png");
+            background-size: 100px 10px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 30px;
+        }
+
+
+        .B {
+            background: url("disk.png");
+            background-size: 150px 10px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 30px;
+        }
+
+
+
+        .C {
+            background: url("disk.png");
+            background-size: 200px 10px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 30px;
+        }
+
+        .D {
+            background: url("disk.png");
+            background-size: 250px 10px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 30px;
+        }
+
+        .E {
+            background: url("disk.png");
+            background-size: 300px 10px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 30px;
+            /* border-radius:15px;
+            height:10px;
+            width:10px; */
+            /* background-color: orange;
+            height: 50px;
+            width: 20px;
+            border-radius: 30px; */
+        }
+
+        .disk {
+            border-radius: 15px;
+        }
+
+        .peg {
+            position: absolute;
+            z-index: -1;
+        }
+        /* .base {
+            position: relative;
+            z-index: -1;
+            top: 35.5vh;
+        } */
+
+        h1 {
+            font-weight: bold;
+            font-size: 5rem;
+        }
+
+        .row {
+            height: 65vh;
+        }
+
+
+        .top-row {
+            height: 10vh;
+            font-weight: bold;
+            font-size: 150%;
+        }
+
+        .space-row {
+            height: 10vh;
+        }
+
+        .base {
+            background-color: black;
+        }
+
+        .buttons {
+            margin-top: 5vh;
+        }
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <h1 class="test">TOWERS OF HANOI</h1>
+    <div class="container">
+        <div class="top-row">
+            <div class="col-xs-4 test">
+                <h3>Tower 1</h3>
+            </div>
+            <div class="col-xs-4 test">
+                <h3>Tower 2</h3>
+            </div>
+            <div class="col-xs-4 test">
+                <h3>Tower 3</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <table>
+                <tr>
+                    <td id="0">0</td>
+                    <td id="5">5</td> 
+                    <td id="10">10</td>
+                </tr>
+                <tr>
+                    <td id="1">1</td>
+                    <td id="6">6</td>
+                    <td id="11">11</td>
+
+                </tr>
+                <tr>
+                    <td id="2">2</td>
+                    <td id="7">7</td>
+                    <td id="12">12</td>
+                </tr>
+                <tr>
+                    <td id="3">3</td>
+                    <td id="8">8</td>
+                    <td id="13">13</td>
+                </tr>
+                <tr>
+                    <td id="4">4</td>
+                    <td id="9">9</td>
+                    <td id="14">14</td>
+                </tr>
+                    
+            </table>
+
+
+            <!-- <div class="col-xs-4 test "><img class="peg " src="peg.png " alt="tower-peg
+                        "><br><img class="base" src="base.png " alt="tower-base "></div>
+            <div class="col-xs-4 test "><img class="peg " src="peg.png " alt="tower-peg
+                        "><br><img class="base" src="base.png " alt="tower-base "></div>
+            <div class="col-xs-4 test "><img class="peg " src="peg.png " alt="tower-peg
+                         "><br><img class="base" src="base.png " alt="tower-base "></div> -->
+        </div>
+        <div class="row buttons">
+            <div class="col-xs-4 test">
+                <button>Move to Tower 2</button>
+                <button onclick="move1to3()">Move to Tower 3</button>
+            </div>
+            <div class="col-xs-4 test">
+                <button>Move to Tower 1</button>
+                <button>Move to Tower 3</button>
+            </div>
+            <div class="col-xs-4 test">
+                <button>Move to 1</button>
+                <button>Move to 2</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // var disk5= document.getElementById("8");
+
+        // var towerOneArr =[disk1,disk2,disk3,disk4,disk5];
+        var towerTwoArr = [];
+        var towerThreeArr = [];
+
+        window.onload = init;
+
+
+        function init() {
+            document.getElementById('0').setAttribute("class", "A");
+            document.getElementById('1').setAttribute("class", "B");
+            document.getElementById('2').setAttribute("class", "C");
+            document.getElementById('3').setAttribute("class", "D");
+            document.getElementById('4').setAttribute("class", "E");
+
+      
+            var cell0 = document.getElementById("0").getAttribute("class");
+            var cell1 = document.getElementById("1").getAttribute("class");
+            var cell2 = document.getElementById("2").getAttribute("class");
+            var cell3 = document.getElementById("3").getAttribute("class"); 
+            var cell4 = document.getElementById("4").getAttribute("class"); 
+            var cell5 = document.getElementById("5").getAttribute("class"); 
+            var cell6 = document.getElementById("6").getAttribute("class"); 
+            var cell7 = document.getElementById("7").getAttribute("class"); 
+            var cell8 = document.getElementById("8").getAttribute("class");
+            var cell9 = document.getElementById("9").getAttribute("class"); 
+            var cell10 = document.getElementById("10").getAttribute("class");
+            var cell11 = document.getElementById("11").getAttribute("class"); 
+            var cell12 = document.getElementById("12").getAttribute("class");
+            var cell13 = document.getElementById("13").getAttribute("class"); 
+            var cell14 = document.getElementById("14").getAttribute("class"); 
+            
+            var tower1 =[cell0,cell1,cell2,cell3,cell4];
+            var tower2 =[cell5,cell6,cell7,cell8,cell9];
+            var tower3 =[cell10,cell11,cell12,cell13,cell14];
+          
+           
+
+
+           
+            console.log("tower1", tower1)
+            console.log("tower2", tower2)
+            console.log("tower3", tower3)
+
+        }
+    </script>
+</body>
+
+</html>

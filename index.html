@@ -192,7 +192,7 @@
             <table>
                 <tr>
                     <td id="0">0</td>
-                    <td id="5">5</td> 
+                    <td id="5">5</td>
                     <td id="10">10</td>
                 </tr>
                 <tr>
@@ -216,7 +216,7 @@
                     <td id="9">9</td>
                     <td id="14">14</td>
                 </tr>
-                    
+
             </table>
 
 
@@ -249,46 +249,82 @@
         var towerTwoArr = [];
         var towerThreeArr = [];
 
-        window.onload = init;
 
 
-        function init() {
-            document.getElementById('0').setAttribute("class", "A");
-            document.getElementById('1').setAttribute("class", "B");
-            document.getElementById('2').setAttribute("class", "C");
-            document.getElementById('3').setAttribute("class", "D");
-            document.getElementById('4').setAttribute("class", "E");
 
-      
-            var cell0 = document.getElementById("0").getAttribute("class");
-            var cell1 = document.getElementById("1").getAttribute("class");
-            var cell2 = document.getElementById("2").getAttribute("class");
-            var cell3 = document.getElementById("3").getAttribute("class"); 
-            var cell4 = document.getElementById("4").getAttribute("class"); 
-            var cell5 = document.getElementById("5").getAttribute("class"); 
-            var cell6 = document.getElementById("6").getAttribute("class"); 
-            var cell7 = document.getElementById("7").getAttribute("class"); 
-            var cell8 = document.getElementById("8").getAttribute("class");
-            var cell9 = document.getElementById("9").getAttribute("class"); 
-            var cell10 = document.getElementById("10").getAttribute("class");
-            var cell11 = document.getElementById("11").getAttribute("class"); 
-            var cell12 = document.getElementById("12").getAttribute("class");
-            var cell13 = document.getElementById("13").getAttribute("class"); 
-            var cell14 = document.getElementById("14").getAttribute("class"); 
-            
-            var tower1 =[cell0,cell1,cell2,cell3,cell4];
-            var tower2 =[cell5,cell6,cell7,cell8,cell9];
-            var tower3 =[cell10,cell11,cell12,cell13,cell14];
-          
-           
+        document.getElementById('0').setAttribute("class", "A");
+        document.getElementById('1').setAttribute("class", "B");
+        document.getElementById('2').setAttribute("class", "C");
+        document.getElementById('3').setAttribute("class", "D");
+        document.getElementById('4').setAttribute("class", "E");
 
 
-           
-            console.log("tower1", tower1)
-            console.log("tower2", tower2)
-            console.log("tower3", tower3)
+        var cell0 = document.getElementById("0");
+        var cell1 = document.getElementById("1");
+        var cell2 = document.getElementById("2");
+        var cell3 = document.getElementById("3");
+        var cell4 = document.getElementById("4");
+        var cell5 = document.getElementById("5");
+        var cell6 = document.getElementById("6");
+        var cell7 = document.getElementById("7");
+        var cell8 = document.getElementById("8");
+        var cell9 = document.getElementById("9");
+        var cell10 = document.getElementById("10");
+        var cell11 = document.getElementById("11");
+        var cell12 = document.getElementById("12");
+        var cell13 = document.getElementById("13");
+        var cell14 = document.getElementById("14");
+
+        var tower1Element = [cell0, cell1, cell2, cell3, cell4];
+        var tower2Element = [cell5, cell6, cell7, cell8, cell9];
+        var tower3Element = [cell10, cell11, cell12, cell13, cell14];
+
+        var cell0Class = document.getElementById("0").getAttribute("class");
+        var cell1Class = document.getElementById("1").getAttribute("class");
+        var cell2Class = document.getElementById("2").getAttribute("class") ;
+        var cell3Class = document.getElementById("3").getAttribute("class") ;
+        var cell4Class = document.getElementById("4").getAttribute("class");
+        var cell5Class = document.getElementById("5").getAttribute("class");
+        var cell6Class = document.getElementById("6").getAttribute("class");
+        var cell7Class = document.getElementById("7").getAttribute("class");
+        var cell8Class = document.getElementById("8").getAttribute("class");
+        var cell9Class = document.getElementById("9").getAttribute("class");
+        var cell10Class = document.getElementById("10").getAttribute("class");
+        var cell11Class = document.getElementById("11").getAttribute("class");
+        var cell12Class = document.getElementById("12").getAttribute("class");
+        var cell13Class = document.getElementById("13").getAttribute("class");
+        var cell14Class = document.getElementById("14").getAttribute("class");
+
+        var tower1Class = [cell0Class, cell1Class, cell2Class, cell3Class, cell4Class];
+        var tower2Class= [cell5Class, cell6Class, cell7Class, cell8Class, cell9Class];
+        var tower3Class = [cell10Class, cell11Class, cell12Class, cell13Class, cell14Class];
+
+
+
+        console.log("tower1Class", tower1Class)
+        console.log("tower2Class", tower2Class)
+        console.log("tower3Class", tower3Class)
+
+        function move1to3() {
+                  
+                   var lastNull = tower3Class.lastIndexOf(null);
+                   
+                   if (tower1Class[0] != null){
+
+                   tower3Class[lastNull].setAttribute("class",tower1Class[0]);
+                   
+                   }
+
+               console.log("tower1Class", tower1Class)
+               console.log("tower2Class", tower2Class)
+               console.log("tower3Class", tower3Class)
+               console.log("lastNull", lastNull)
+               console.log("tower1[0]", `${tower1[0]}`)
+               
 
         }
+        
+            
     </script>
 </body>
 

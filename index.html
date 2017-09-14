@@ -11,9 +11,9 @@
             src: "Cartwheel.otf";
         }
 
-        * {
+        /* * {
             outline: 1px solid red;
-        }
+        } */
 
         table {
         }
@@ -243,35 +243,35 @@
         <div class="row">
             <table>
                 <tr>
-                    <td id="0">0</td>
-                    <td id="6">6</td>
-                    <td id="12">12</td>
+                    <td id="0"></td>
+                    <td id="6"></td>
+                    <td id="12"></td>
                 </tr>
                 <tr>
-                    <td id="1">1</td>
-                    <td id="7">7</td>
-                    <td id="13">13</td>
+                    <td id="1"></td>
+                    <td id="7"></td>
+                    <td id="13"></td>
 
                 </tr>
                 <tr>
-                    <td id="2">2</td>
-                    <td id="8">8</td>
-                    <td id="14">14</td>
+                    <td id="2"></td>
+                    <td id="8"></td>
+                    <td id="14"></td>
                 </tr>
                 <tr>
-                    <td id="3">3</td>
-                    <td id="9">9</td>
-                    <td id="15">15</td>
+                    <td id="3"></td>
+                    <td id="9"></td>
+                    <td id="15"></td>
                 </tr>
                 <tr>
-                    <td id="4">4</td>
-                    <td id="10">10</td>
-                    <td id="16">16</td>
+                    <td id="4"></td>
+                    <td id="10"></td>
+                    <td id="16"></td>
                 </tr>
                 <tr>
-                    <td id="5" class="a">5</td>
-                    <td id="11" class="a">11</td>
-                    <td id="17" class="a">17</td>
+                    <td id="5" class="a"></td>
+                    <td id="11" class="a"></td>
+                    <td id="17" class="a"></td>
                 </tr>
             </table>
 
@@ -463,8 +463,13 @@
          
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+
+                document.getElementById("gong").play(); 
+
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+
+                document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -534,8 +539,10 @@
 
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -603,8 +610,11 @@
 
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+            document.getElementById("gong").play(); 
+
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+             document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -672,8 +682,10 @@
 
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -743,8 +755,10 @@
 
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -812,8 +826,10 @@
 
             if ((tower2Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             } else if ((tower3Class.indexOf(null)) == -1) {
                 wins++;
+                document.getElementById("gong").play();    
             }
 
             document.getElementById("wins").innerHTML = wins;
@@ -825,6 +841,7 @@
 
     </script>
     <audio id="swoosh" src="swoosh.mp3"></audio>
+    <audio id="gong" src="gong.mp3"></audio>
 </body>
 
 </html>

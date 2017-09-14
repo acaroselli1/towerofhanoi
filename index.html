@@ -44,7 +44,7 @@
         .ring5 {
 
             background-color: green;
-            height: 50px;
+            height: 100px;
             width: 300px;
             border-radius: 30px;
         }
@@ -71,7 +71,7 @@
 
         .A {
             background: url("disk.png");
-            background-size: 100px 10px;
+            background-size: 100px 20px;
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
@@ -81,7 +81,7 @@
 
         .B {
             background: url("disk.png");
-            background-size: 150px 10px;
+            background-size: 150px 20px;
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
@@ -92,7 +92,7 @@
 
         .C {
             background: url("disk.png");
-            background-size: 200px 10px;
+            background-size: 200px 20px;
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
@@ -101,7 +101,7 @@
 
         .D {
             background: url("disk.png");
-            background-size: 250px 10px;
+            background-size: 250px 20px;
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
@@ -110,7 +110,7 @@
 
         .E {
             background: url("disk.png");
-            background-size: 300px 10px;
+            background-size: 300px 20px;
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
@@ -169,6 +169,7 @@
         .a{
             background-color:black;
         }
+       
     </style>
 
 
@@ -179,6 +180,7 @@
 
 <body>
     <h1 class="test">TOWERS OF HANOI</h1>
+    <h3 class="test">MOVES:&nbsp;</h3><span id="moves"></span>
     <div class="container">
         <div class="top-row">
             <div class="col-xs-4 test">
@@ -257,10 +259,10 @@
         // // var disk5= document.getElementById("8");
 
         // // var towerOneArr =[disk1,disk2,disk3,disk4,disk5];
+        var moves=0;
+        document.getElementById("moves").innerHTML = moves;
 
-
-
-
+        
 
         document.getElementById('0').setAttribute("class", "A");
         document.getElementById('1').setAttribute("class", "B");
@@ -353,6 +355,8 @@
 
 
         function move1to3() {
+            moves++;
+            
                 var lastNull = tower3Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;
                     console.log(tower1Class[0])
@@ -404,7 +408,7 @@
             }
 
             function move1to2() {
-
+                moves++;
 
                 var lastNull = tower2Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;
@@ -456,8 +460,7 @@
             }
 
             function move2to1() {
-
-
+                moves++;
                 var lastNull = tower1Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;
                if (tower2Class[0] != null){
@@ -508,7 +511,7 @@
             }
 
             function move2to3() {
-
+                moves++;
 
                 var lastNull = tower3Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;
@@ -559,8 +562,8 @@
 
             }
             function move3to1() {
-
-
+                 moves++;
+                 
                 var lastNull = tower1Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;
                if (tower3Class[0] != null){
@@ -610,7 +613,7 @@
 
             }
             function move3to2() {
-
+                moves++;
 
                 var lastNull = tower2Class.lastIndexOf(null);
                 var lastNullPlus1 = lastNull + 1;

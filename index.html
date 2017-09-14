@@ -15,11 +15,13 @@
             outline: 1px solid red;
         }
 
-        table {}
+        table {
+        }
 
         td {
             width: 40vw;
             height: 5vw;
+            
         }
 
         tr {
@@ -75,7 +77,8 @@
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 30px;
+            background-color:transparent;
+            
         }
 
 
@@ -85,7 +88,7 @@
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 30px;
+            background-color:transparent;
         }
 
 
@@ -96,7 +99,7 @@
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 30px;
+            background-color:transparent;
         }
 
         .D {
@@ -105,7 +108,7 @@
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 30px;
+            background-color:transparent;
         }
 
         .E {
@@ -114,7 +117,7 @@
             margin-left: 100px;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 30px;
+            background-color:transparent;
             /* border-radius:15px;
             height:10px;
             width:10px; */
@@ -138,13 +141,26 @@
             top: 35.5vh;
         } */
 
-        h1 {
+        .title{
             font-weight: bold;
-            font-size: 5rem;
+            font-size: 5vw;
+            font-family:"Cartwheel";
+            margin-bottom:7.5vh;
+        }
+        .moves {
+            font-weight: bold;
+            font-size: 3vw;
+            font-family:"Cartwheel";
+
         }
 
+        .wins{
+            font-weight: bold;
+            font-size: 3vw;
+            font-family:"Cartwheel";
+        }
         .row {
-            height: 65vh;
+            height: 60vh;
         }
 
 
@@ -164,14 +180,43 @@
 
         .buttons {
             margin-top: 5vh;
+            font-family:"Cartwheel";
+            color:white;   
+
         }
 
-        .a{
-            background-color:black;
+        .a {
+            background-color: navy;
         }
-       
+
+        .tower{
+            font-size:2.5vw;
+            font-family:"Cartwheel";
+        }
+
+        #moves{
+        color:red;
+        font-family:"Cartwheel";
+        }
+
+        #wins{
+        color:red;
+        font-family:"Cartwheel";
+        }
+        .display{
+            margin-bottom:4vh;
+        }
+        button{
+            background-color:red;
+            border-radius:15px;
+        }
+        .btnNum{
+            color:white;
+            font-size:1.5vw;
+        }
+
     </style>
-
+    
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -179,18 +224,19 @@
 </head>
 
 <body>
-    <h1 class="test">TOWERS OF HANOI</h1>
-    <h3 class="test">MOVES:&nbsp;</h3><span id="moves"></span>
+    <p class="test title">TOWERS OF HANOI</p>
+    <p class="test moves display">MOVES:&nbsp;<span id="moves">0</span><span class="test wins">&nbsp;&nbsp;WINS:&nbsp;<span id="wins">0</span></span></p>
+    
     <div class="container">
         <div class="top-row">
             <div class="col-xs-4 test">
-                <h3>Tower 1</h3>
+                <span class="tower">TOWER 1</span>
             </div>
             <div class="col-xs-4 test">
-                <h3>Tower 2</h3>
+                <span class="tower">TOWER 2</span>
             </div>
             <div class="col-xs-4 test">
-                <h3>Tower 3</h3>
+                <span class="tower">TOWER 3</span>
             </div>
         </div>
 
@@ -239,16 +285,16 @@
         </div>
         <div class="row buttons">
             <div class="col-xs-4 test">
-                <button onclick="move1to2()">Move to Tower 2</button>
-                <button onclick="move1to3()">Move to Tower 3</button>
+                <button onclick="move1to2()">Move to <span class =" btnNum">2</span></button>
+                <button onclick="move1to3()">Move to <span class =" btnNum"  >3</span></button>
             </div>
             <div class="col-xs-4 test">
-                <button onclick="move2to1()">Move to Tower 1 </button>
-                <button onclick="move2to3()" >Move to Tower 3</button>
+                <button onclick="move2to1()">Move to <span class =" btnNum">1</span></button>
+                <button onclick="move2to3()">Move to <span class =" btnNum">3</span></button>
             </div>
             <div class="col-xs-4 test">
-                <button onclick ="move3to1()">Move to 1</button>
-                <button onclick="move3to2()">Move to 2</button>
+                <button onclick="move3to1()">Move to <span class =" btnNum">1</span></button>
+                <button onclick="move3to2()">Move to <span class =" btnNum">2</span></button>
             </div>
         </div>
     </div>
@@ -259,10 +305,10 @@
         // // var disk5= document.getElementById("8");
 
         // // var towerOneArr =[disk1,disk2,disk3,disk4,disk5];
-        var moves=0;
-        document.getElementById("moves").innerHTML = moves;
+        var moves = 0;
+        var wins = 0;
 
-        
+
 
         document.getElementById('0').setAttribute("class", "A");
         document.getElementById('1').setAttribute("class", "B");
@@ -292,8 +338,8 @@
 
 
 
-         
-            
+
+
         var tower1Element = [cell0, cell1, cell2, cell3, cell4, cell5];
         var tower2Element = [cell6, cell7, cell8, cell9, cell10, cell11];
         var tower3Element = [cell12, cell13, cell14, cell15, cell16, cell17];
@@ -303,23 +349,23 @@
         //             var image1 = document.getElementById("A");
 
         //             tower3Element[4].appendChild(image1)
-                     
-                   
-            
+
+
+
         // }
 
 
         // function move1to2(){
         //     var image1 = document.getElementById("A");
-                 
+
         //     tower3Element[4].removeChild(image1)
 
 
         // }
         var cell0Class = document.getElementById("0").getAttribute("class");
         var cell1Class = document.getElementById("1").getAttribute("class");
-        var cell2Class = document.getElementById("2").getAttribute("class") ;
-        var cell3Class = document.getElementById("3").getAttribute("class") ;
+        var cell2Class = document.getElementById("2").getAttribute("class");
+        var cell3Class = document.getElementById("3").getAttribute("class");
         var cell4Class = document.getElementById("4").getAttribute("class");
         var cell5Class = document.getElementById("5").getAttribute("class");
         var cell6Class = document.getElementById("6").getAttribute("class");
@@ -336,7 +382,7 @@
         var cell17Class = document.getElementById("17").getAttribute("class");
 
         var tower1Class = [cell0Class, cell1Class, cell2Class, cell3Class, cell4Class, cell5Class];
-        var tower2Class= [cell6Class, cell7Class, cell8Class, cell9Class, cell10Class, cell11Class];
+        var tower2Class = [cell6Class, cell7Class, cell8Class, cell9Class, cell10Class, cell11Class];
         var tower3Class = [cell12Class, cell13Class, cell14Class, cell15Class, cell16Class, cell17Class];
 
 
@@ -355,314 +401,430 @@
 
 
         function move1to3() {
-            moves++;
+
+            var lastNull = tower3Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            console.log(tower1Class[0])
+            if (tower1Class[0] != null) {
+                if (tower1Class[0] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower1Class[0]);
+                    tower3Class[lastNull] = tower1Class[0];
+                    tower1Element[0].removeAttribute("class");
+                    tower1Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[1] != null) {
+                if (tower1Class[1] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower1Class[1]);
+                    tower3Class[lastNull] = tower1Class[1];
+                    tower1Element[1].removeAttribute("class")
+                    tower1Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[2] != null) {
+                if (tower1Class[2] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower1Class[2]);
+                    tower3Class[lastNull] = tower1Class[2];
+                    tower1Element[2].removeAttribute("class")
+                    tower1Class[2] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[3] != null) {
+                if (tower1Class[3] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower1Class[3]);
+                    tower3Class[lastNull] = tower1Class[3];
+                    tower1Element[3].removeAttribute("class")
+                    tower1Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[4] != null) {
+                if (tower1Class[4] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower1Class[4]);
+                    tower3Class[lastNull] = tower1Class[4];
+                    tower1Element[4].removeAttribute("class")
+                    tower1Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            }
+
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
+
+            document.getElementById("moves").innerHTML = moves;
+         
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
+            }
+
+            document.getElementById("wins").innerHTML = wins;
+        }
+
+        function move1to2() {
+
+
+            var lastNull = tower2Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            if (tower1Class[0] != null) {
+                if (tower1Class[0] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower1Class[0]);
+                    tower2Class[lastNull] = tower1Class[0]
+                    tower1Element[0].removeAttribute("class");
+                    tower1Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[1] != null) {
+                if (tower1Class[1] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower1Class[1]);
+                    tower2Class[lastNull] = tower1Class[1]
+                    tower1Element[1].removeAttribute("class")
+                    tower1Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[2] != null) {
+                if (tower1Class[2] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower1Class[2]);
+                    tower2Class[lastNull] = tower1Class[2];
+                    tower1Element[2].removeAttribute("class")
+                    tower1Class[2] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[3] != null) {
+                if (tower1Class[3] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower1Class[3]);
+                    tower2Class[lastNull] = tower1Class[3]
+                    tower1Element[3].removeAttribute("class")
+                    tower1Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower1Class[4] != null) {
+                if (tower1Class[4] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower1Class[4]);
+                    tower2Class[lastNull] = tower1Class[4]
+                    tower1Element[4].removeAttribute("class")
+                    tower1Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            }
+
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
+
+            document.getElementById("moves").innerHTML = moves;
+
+
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
+            }
+
+            document.getElementById("wins").innerHTML = wins;
             
-                var lastNull = tower3Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-                    console.log(tower1Class[0])
-                if (tower1Class[0] != null){
-                        if (tower1Class[0] < tower3Element[lastNullPlus1].getAttribute("class")){
-                         tower3Element[lastNull].setAttribute("class",tower1Class[0]);
-                         tower3Class[lastNull] = tower1Class[0];
-                         tower1Element[0].removeAttribute("class");
-                         tower1Class[0] = null;
-                        }
-                } else if (tower1Class[1] != null){
-                    if (tower1Class[1] < tower3Element[lastNullPlus1].getAttribute("class")){
-                     tower3Element[lastNull].setAttribute("class",tower1Class[1]);
-                     tower3Class[lastNull]= tower1Class[1];
-                     tower1Element[1].removeAttribute("class")
-                     tower1Class[1] = null;
-                    }
-                } else if (tower1Class[2] != null){
-                    if (tower1Class[2] < tower3Element[lastNullPlus1].getAttribute("class")){
-                     tower3Element[lastNull].setAttribute("class",tower1Class[2]);
-                     tower3Class[lastNull] =tower1Class[2];
-                     tower1Element[2].removeAttribute("class")
-                     tower1Class[2]=null;
-                    }
-                } else if (tower1Class[3] != null){
-                    if (tower1Class[3] < tower3Element[lastNullPlus1].getAttribute("class")){
-                     tower3Element[lastNull].setAttribute("class",tower1Class[3]);
-                     tower3Class[lastNull]=tower1Class[3];
-                     tower1Element[3].removeAttribute("class") 
-                     tower1Class[3]=null;
-                    }
-                } else if (tower1Class[4] != null){
-                    if (tower1Class[4] < tower3Element[lastNullPlus1].getAttribute("class")){
-                     tower3Element[lastNull].setAttribute("class",tower1Class[4]);
-                     tower3Class[lastNull]=tower1Class[4];
-                     tower1Element[4].removeAttribute("class")
-                     tower1Class[4]=null;
-                    }
-                }   
+        }
 
-                console.log("tower1Class", tower1Class)
-                console.log("tower2Class", tower2Class)
-                console.log("tower3Class", tower3Class)
-                console.log("tower1Element", tower1Element)
-                console.log("tower2Element", tower2Element)
-                console.log("tower3Element", tower3Element)
+        function move2to1() {
 
-
+            var lastNull = tower1Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            if (tower2Class[0] != null) {
+                if (tower2Class[0] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower2Class[0]);
+                    tower1Class[lastNull] = tower2Class[0]
+                    tower2Element[0].removeAttribute("class");
+                    tower2Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[1] != null) {
+                if (tower2Class[1] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower2Class[1]);
+                    tower1Class[lastNull] = tower2Class[1]
+                    tower2Element[1].removeAttribute("class")
+                    tower2Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[2] != null) {
+                if (tower2Class[2] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower2Class[2]);
+                    tower1Class[lastNull] = tower2Class[2];
+                    tower2Element[2].removeAttribute("class")
+                    tower2Class[2] = null;
+                    moves++;
+                }
+            } else if (tower2Class[3] != null) {
+                if (tower2Class[3] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower2Class[3]);
+                    tower1Class[lastNull] = tower2Class[3]
+                    tower2Element[3].removeAttribute("class")
+                    tower2Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[4] != null) {
+                if (tower2Class[4] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower2Class[4]);
+                    tower1Class[lastNull] = tower2Class[4]
+                    tower2Element[4].removeAttribute("class")
+                    tower2Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
             }
 
-            function move1to2() {
-                moves++;
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
 
-                var lastNull = tower2Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-               if (tower1Class[0] != null){
-                  if (tower1Class[0] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower1Class[0]);
-                  tower2Class[lastNull]=tower1Class[0]
-                  tower1Element[0].removeAttribute("class");
-                  tower1Class[0] = null;
-                  }
-             } else if (tower1Class[1] != null){
-                 if (tower1Class[1] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower1Class[1]);
-                  tower2Class[lastNull]=tower1Class[1]
-                  tower1Element[1].removeAttribute("class")
-                  tower1Class[1] = null;
-                 }
-             } else if (tower1Class[2] != null){
-                 if (tower1Class[2] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower1Class[2]);
-                  tower2Class[lastNull]=tower1Class[2];
-                  tower1Element[2].removeAttribute("class")
-                  tower1Class[2]=null;
-                 }
-             } else if (tower1Class[3] != null){
-                 if (tower1Class[3] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower1Class[3]);
-                  tower2Class[lastNull]=tower1Class[3]
-                  tower1Element[3].removeAttribute("class") 
-                  tower1Class[3]=null;
-                 }
-             } else if (tower1Class[4] != null){
-                 if (tower1Class[4] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower1Class[4]);
-                  tower2Class[lastNull]=tower1Class[4]
-                  tower1Element[4].removeAttribute("class")
-                  tower1Class[4]=null;
-                 }
-             }   
+            document.getElementById("moves").innerHTML = moves;
 
-             console.log("tower1Class", tower1Class)
-             console.log("tower2Class", tower2Class)
-             console.log("tower3Class", tower3Class)
-             console.log("tower1Element", tower1Element)
-             console.log("tower2Element", tower2Element)
-             console.log("tower3Element", tower3Element)
-
-
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
             }
 
-            function move2to1() {
-                moves++;
-                var lastNull = tower1Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-               if (tower2Class[0] != null){
-                  if (tower2Class[0] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower2Class[0]);
-                  tower1Class[lastNull]=tower2Class[0]
-                  tower2Element[0].removeAttribute("class");
-                  tower2Class[0] = null;
-                  }
-             } else if (tower2Class[1] != null){
-                 if (tower2Class[1] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower2Class[1]);
-                  tower1Class[lastNull]=tower2Class[1]
-                  tower2Element[1].removeAttribute("class")
-                  tower2Class[1] = null;
-                 }
-             } else if (tower2Class[2] != null){
-                 if (tower2Class[2] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower2Class[2]);
-                  tower1Class[lastNull]=tower2Class[2];
-                  tower2Element[2].removeAttribute("class")
-                  tower2Class[2]=null;
-                 }
-             } else if (tower2Class[3] != null){
-                 if (tower2Class[3] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower2Class[3]);
-                  tower1Class[lastNull]=tower2Class[3]
-                  tower2Element[3].removeAttribute("class") 
-                  tower2Class[3]=null;
-                 }
-             } else if (tower2Class[4] != null){
-                 if (tower2Class[4] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower2Class[4]);
-                  tower1Class[lastNull]=tower2Class[4]
-                  tower2Element[4].removeAttribute("class")
-                  tower2Class[4]=null;
-                 }
-             }   
+            document.getElementById("wins").innerHTML = wins;
+        }
 
-             console.log("tower1Class", tower1Class)
-             console.log("tower2Class", tower2Class)
-             console.log("tower3Class", tower3Class)
-             console.log("tower1Element", tower1Element)
-             console.log("tower2Element", tower2Element)
-             console.log("tower3Element", tower3Element)
+        function move2to3() {
 
-
+            var lastNull = tower3Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            if (tower2Class[0] != null) {
+                if (tower2Class[0] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower2Class[0]);
+                    tower3Class[lastNull] = tower2Class[0]
+                    tower2Element[0].removeAttribute("class");
+                    tower2Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[1] != null) {
+                if (tower2Class[1] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower2Class[1]);
+                    tower3Class[lastNull] = tower2Class[1]
+                    tower2Element[1].removeAttribute("class")
+                    tower2Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[2] != null) {
+                if (tower2Class[2] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower2Class[2]);
+                    tower3Class[lastNull] = tower2Class[2];
+                    tower2Element[2].removeAttribute("class")
+                    tower2Class[2] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[3] != null) {
+                if (tower2Class[3] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower2Class[3]);
+                    tower3Class[lastNull] = tower2Class[3]
+                    tower2Element[3].removeAttribute("class")
+                    tower2Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower2Class[4] != null) {
+                if (tower2Class[4] < tower3Element[lastNullPlus1].getAttribute("class")) {
+                    tower3Element[lastNull].setAttribute("class", tower2Class[4]);
+                    tower3Class[lastNull] = tower2Class[4]
+                    tower2Element[4].removeAttribute("class")
+                    tower2Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
             }
 
-            function move2to3() {
-                moves++;
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
 
-                var lastNull = tower3Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-               if (tower2Class[0] != null){
-                  if (tower2Class[0] < tower3Element[lastNullPlus1].getAttribute("class")){
-                  tower3Element[lastNull].setAttribute("class",tower2Class[0]);
-                  tower3Class[lastNull]=tower2Class[0]
-                  tower2Element[0].removeAttribute("class");
-                  tower2Class[0] = null;
-                  }
-             } else if (tower2Class[1] != null){
-                 if (tower2Class[1] < tower3Element[lastNullPlus1].getAttribute("class")){
-                  tower3Element[lastNull].setAttribute("class",tower2Class[1]);
-                  tower3Class[lastNull]=tower2Class[1]
-                  tower2Element[1].removeAttribute("class")
-                  tower2Class[1] = null;
-                 }
-             } else if (tower2Class[2] != null){
-                 if (tower2Class[2] < tower3Element[lastNullPlus1].getAttribute("class")){
-                  tower3Element[lastNull].setAttribute("class",tower2Class[2]);
-                  tower3Class[lastNull]=tower2Class[2];
-                  tower2Element[2].removeAttribute("class")
-                  tower2Class[2]=null;
-                 }
-             } else if (tower2Class[3] != null){
-                 if (tower2Class[3] < tower3Element[lastNullPlus1].getAttribute("class")){
-                  tower3Element[lastNull].setAttribute("class",tower2Class[3]);
-                  tower3Class[lastNull]=tower2Class[3]
-                  tower2Element[3].removeAttribute("class") 
-                  tower2Class[3]=null;
-                 }
-             } else if (tower2Class[4] != null){
-                 if (tower2Class[4] < tower3Element[lastNullPlus1].getAttribute("class")){
-                  tower3Element[lastNull].setAttribute("class",tower2Class[4]);
-                  tower3Class[lastNull]=tower2Class[4]
-                  tower2Element[4].removeAttribute("class")
-                  tower2Class[4]=null;
-                 }
-             }   
+            document.getElementById("moves").innerHTML = moves;
 
-             console.log("tower1Class", tower1Class)
-             console.log("tower2Class", tower2Class)
-             console.log("tower3Class", tower3Class)
-             console.log("tower1Element", tower1Element)
-             console.log("tower2Element", tower2Element)
-             console.log("tower3Element", tower3Element)
-
-
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
             }
-            function move3to1() {
-                 moves++;
-                 
-                var lastNull = tower1Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-               if (tower3Class[0] != null){
-                  if (tower3Class[0] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower3Class[0]);
-                  tower1Class[lastNull]=tower3Class[0]
-                  tower3Element[0].removeAttribute("class");
-                  tower3Class[0] = null;
-                  }
-             } else if (tower3Class[1] != null){
-                 if (tower3Class[1] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower3Class[1]);
-                  tower1Class[lastNull]=tower3Class[1]
-                  tower3Element[1].removeAttribute("class")
-                  tower3Class[1] = null;
-                 }
-             } else if (tower3Class[2] != null){
-                 if (tower3Class[2] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower3Class[2]);
-                  tower1Class[lastNull]=tower3Class[2];
-                  tower3Element[2].removeAttribute("class")
-                  tower3Class[2]=null;
-                 }
-             } else if (tower3Class[3] != null){
-                 if (tower3Class[3] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower3Class[3]);
-                  tower1Class[lastNull]=tower3Class[3]
-                  tower3Element[3].removeAttribute("class") 
-                  tower3Class[3]=null;
-                 }
-             } else if (tower3Class[4] != null){
-                 if (tower3Class[4] < tower1Element[lastNullPlus1].getAttribute("class")){
-                  tower1Element[lastNull].setAttribute("class",tower3Class[4]);
-                  tower1Class[lastNull]=tower3Class[4]
-                  tower3Element[4].removeAttribute("class")
-                  tower3Class[4]=null;
-                 }
-             }   
 
-             console.log("tower1Class", tower1Class)
-             console.log("tower2Class", tower2Class)
-             console.log("tower3Class", tower3Class)
-             console.log("tower1Element", tower1Element)
-             console.log("tower2Element", tower2Element)
-             console.log("tower3Element", tower3Element)
+            document.getElementById("wins").innerHTML = wins;
 
 
+        }
+        function move3to1() {
+
+
+            var lastNull = tower1Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            if (tower3Class[0] != null) {
+                if (tower3Class[0] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower3Class[0]);
+                    tower1Class[lastNull] = tower3Class[0]
+                    tower3Element[0].removeAttribute("class");
+                    tower3Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[1] != null) {
+                if (tower3Class[1] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower3Class[1]);
+                    tower1Class[lastNull] = tower3Class[1]
+                    tower3Element[1].removeAttribute("class")
+                    tower3Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[2] != null) {
+                if (tower3Class[2] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower3Class[2]);
+                    tower1Class[lastNull] = tower3Class[2];
+                    tower3Element[2].removeAttribute("class")
+                    tower3Class[2] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[3] != null) {
+                if (tower3Class[3] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower3Class[3]);
+                    tower1Class[lastNull] = tower3Class[3]
+                    tower3Element[3].removeAttribute("class")
+                    tower3Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[4] != null) {
+                if (tower3Class[4] < tower1Element[lastNullPlus1].getAttribute("class")) {
+                    tower1Element[lastNull].setAttribute("class", tower3Class[4]);
+                    tower1Class[lastNull] = tower3Class[4]
+                    tower3Element[4].removeAttribute("class")
+                    tower3Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
             }
-            function move3to2() {
-                moves++;
 
-                var lastNull = tower2Class.lastIndexOf(null);
-                var lastNullPlus1 = lastNull + 1;
-               if (tower3Class[0] != null){
-                  if (tower3Class[0] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower3Class[0]);
-                  tower2Class[lastNull]=tower3Class[0]
-                  tower3Element[0].removeAttribute("class");
-                  tower3Class[0] = null;
-                  }
-             } else if (tower3Class[1] != null){
-                 if (tower3Class[1] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower3Class[1]);
-                  tower2Class[lastNull]=tower3Class[1]
-                  tower3Element[1].removeAttribute("class")
-                  tower3Class[1] = null;
-                 }
-             } else if (tower3Class[2] != null){
-                 if (tower3Class[2] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower3Class[2]);
-                  tower2Class[lastNull]=tower3Class[2];
-                  tower3Element[2].removeAttribute("class")
-                  tower3Class[2]=null;
-                 }
-             } else if (tower3Class[3] != null){
-                 if (tower3Class[3] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower3Class[3]);
-                  tower2Class[lastNull]=tower3Class[3]
-                  tower3Element[3].removeAttribute("class") 
-                  tower3Class[3]=null;
-                 }
-             } else if (tower3Class[4] != null){
-                 if (tower3Class[4] < tower2Element[lastNullPlus1].getAttribute("class")){
-                  tower2Element[lastNull].setAttribute("class",tower3Class[4]);
-                  tower2Class[lastNull]=tower3Class[4]
-                  tower3Element[4].removeAttribute("class")
-                  tower3Class[4]=null;
-                 }
-             }   
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
 
-             console.log("tower1Class", tower1Class)
-             console.log("tower2Class", tower2Class)
-             console.log("tower3Class", tower3Class)
-             console.log("tower1Element", tower1Element)
-             console.log("tower2Element", tower2Element)
-             console.log("tower3Element", tower3Element)
+            document.getElementById("moves").innerHTML = moves;
 
-
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
             }
+
+            document.getElementById("wins").innerHTML = wins;
+        }
+        function move3to2() {
+
+
+            var lastNull = tower2Class.lastIndexOf(null);
+            var lastNullPlus1 = lastNull + 1;
+            if (tower3Class[0] != null) {
+                if (tower3Class[0] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower3Class[0]);
+                    tower2Class[lastNull] = tower3Class[0]
+                    tower3Element[0].removeAttribute("class");
+                    tower3Class[0] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[1] != null) {
+                if (tower3Class[1] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower3Class[1]);
+                    tower2Class[lastNull] = tower3Class[1]
+                    tower3Element[1].removeAttribute("class")
+                    tower3Class[1] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[2] != null) {
+                if (tower3Class[2] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower3Class[2]);
+                    tower2Class[lastNull] = tower3Class[2];
+                    tower3Element[2].removeAttribute("class")
+                    tower3Class[2] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[3] != null) {
+                if (tower3Class[3] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower3Class[3]);
+                    tower2Class[lastNull] = tower3Class[3]
+                    tower3Element[3].removeAttribute("class")
+                    tower3Class[3] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            } else if (tower3Class[4] != null) {
+                if (tower3Class[4] < tower2Element[lastNullPlus1].getAttribute("class")) {
+                    tower2Element[lastNull].setAttribute("class", tower3Class[4]);
+                    tower2Class[lastNull] = tower3Class[4]
+                    tower3Element[4].removeAttribute("class")
+                    tower3Class[4] = null;
+                    moves++;
+                    document.getElementById("swoosh").play();
+                }
+            }
+
+            console.log("tower1Class", tower1Class)
+            console.log("tower2Class", tower2Class)
+            console.log("tower3Class", tower3Class)
+            console.log("tower1Element", tower1Element)
+            console.log("tower2Element", tower2Element)
+            console.log("tower3Element", tower3Element)
+
+            document.getElementById("moves").innerHTML = moves;
+
+            if ((tower2Class.indexOf(null)) == -1) {
+                wins++;
+            } else if ((tower3Class.indexOf(null)) == -1) {
+                wins++;
+            }
+
+            document.getElementById("wins").innerHTML = wins;
+        }
+         
+        
+
+
+
     </script>
+    <audio id="swoosh" src="swoosh.mp3"></audio>
 </body>
+
 </html>
